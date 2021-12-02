@@ -1,4 +1,5 @@
 mod day01;
+mod day02;
 
 use std::env;
 // use std::fs::File;
@@ -8,7 +9,7 @@ use std::io::Error;
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<String> = env::args().collect();
 
-    let default_day = 1;
+    let default_day = 2;
 
     let day: i32 = if args.len() > 1 {
         args[1].parse().unwrap_or(default_day)
@@ -30,6 +31,7 @@ fn run_day(day: i32) -> Result<(), Error> {
 
     match day {
         1 => day01::run(),
+        2 => day02::run(),
         _ => println!("Day {} not yet implemented!", day),
     };
 
