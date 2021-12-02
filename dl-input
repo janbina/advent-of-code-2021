@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ $# != 1 ]; then
+    echo "Usage: $(basename "$0") <day-number>" >&2
+    exit 1
+fi
+if [ ! -d .git ]; then
+    echo "must be run from root of advent-of-code repository" >&2
+    exit 1
+fi
+
+url="$(printf "https://adventofcode.com/2021/day/%d/input" "$1")"
+outfile="$(printf "input/day%02d.txt" "$1")"
+cookie=$(cat session-cookie)
+
+curl "$url" -H "cookie: session=$cookie"  > "$outfile"
